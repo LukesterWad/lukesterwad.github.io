@@ -127,4 +127,10 @@ a {
     -moz-transform: rotate(-90deg);
   }
 }
+
+@media (max-width: 670px) {
+  #communication {
+    font-size: 80px;
+  }
+}
 /*# sourceMappingURL=style.css.map */
