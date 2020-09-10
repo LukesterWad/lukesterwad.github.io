@@ -1,0 +1,198 @@
+<html>
+	<head>
+		<meta charset="UFT-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link type="text/css" rel="stylesheet" href="../css/style.css" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400&family=Oxygen:wght@300;400;700&family=Raleway:wght@300;400;500&display=swap"
+			rel="stylesheet"
+		/>
+		<title>Luke W - Home</title>
+	</head>
+	<body>
+		<header>
+			<ul class="header">
+				<li><a href="../">home</a></li>
+				<li><a href="../contact.html">contact</a></li>
+			</ul>
+		</header>
+
+		<main>
+			<section class="intro smartfan-body">
+				<div>
+					<h1 id="smartfan-title">smartfan</h1>
+					<h3
+						id="smartfan-subtitle"
+						style="margin-top: 0px; text-align: center"
+					>
+						my fan but smarter
+					</h3>
+					<p>
+						My room never stays the same level of heat. It can
+						hardly remain habitable for more than a minute, and I
+						don't want to deal with the physical challenge of
+						constantly turning something on and off that my lovely
+						Argos-sourced, £10 fan imposes on me. It was my 7th or
+						8th week of teetering temperature, I was sitting at my
+						desk waiting for summer to be over. It was in that
+						moment of realization, "what the hell am I doing
+						flipping this dastardly switch for the 100th time?" that
+						led me to seek out a solution. The solution was obvious,
+						buy a fan that regulates itself. I guess I forgot how
+						little money I had, because for a second, I actually
+						thought I could afford the $40+ price tag. I
+						begrudgingly snapped back to reality and figured it
+						wouldn't be worth it at that price point. Then I
+						thought, "why not just make one myself?", I've made
+						everything from PC gesture-control to a camera-spinning
+						panorama constructor.
+					</p>
+					<p>
+						I ordered a cheap RasPi Zero W off of PiHut and began
+						tinkering around with the GPIO Python integration.
+						Unfortunately, my GCSE CS exam was coming up soon and I
+						tend to favor personal projects over studying, so the
+						project fell by the wayside. At least it did for a
+						couple months until I was free from the trecherous hours
+						I had to spend with my head in a textbook, and I was
+						presented with a convenient opportunity to assert my
+						dominance over my friends.
+					</p>
+					<p>
+						Stemming from the completion of GCSE Computer Science,
+						one of my friends suggested a competition to see who can
+						best apply their acquired knowledge. I glady accepted...
+					</p>
+					<p>
+						Anyway, I stayed up a couple of nights in a row
+						developing the code and got a prototype working but with
+						only LEDs rather than a full appliance. It functioned
+						surprisingly well, with complete client and server side
+						applications. It was at a point where I felt it could be
+						scaled up with a couple of hardware improvements. I
+						figured an explanation of the inner workings would make
+						for an interesting read.
+					</p>
+					<h4 style="text-align: center">hardware</h4>
+					<p>
+						In all transparency, I'm a software guy who can do
+						hardware, not the other way around. That being said, I'm
+						going to cover hardware first because it's fairly simple
+						(relative to the software at least) and I just want to
+						get it out of the way. I threw together this dumbed down
+						schematic to help with my explination.
+					</p>
+					<!--! important diagram needed -->
+					<p>
+						There were 4 major components:
+						<li class="article-list" style="margin-top: -20px">
+							RasPi Zero W
+						</li>
+						<li class="article-list">High Torque Servo</li>
+						<li class="article-list">
+							Microcontroller (ATMEGA 328p)
+						</li>
+						<li class="article-list">
+							A Cheap Rechargable Battery Pack
+						</li>
+					</p>
+					<p>
+						The ATMEGA 328p acts as a center of communication for
+						the system. It processes data sent by the Pi and issues
+						instructions for the servo accordingly. I'll cover the
+						code that's written onto the microcontroller in the
+						software portion. The Pi pairs with the user interface
+						through POST requests to a NodeJS server run on the Pi
+						itself. Upon receiving a post request, it sends the
+						relevant data to the microcontroller for further
+						processing. If the encrypted information is verified to
+						be from a valid copy of the UI, it instructs the servo
+						to turn to either 0° or 90°, flicking the plug socket
+						switch.
+					</p>
+					<p>
+						It should be noted that data is only transmitted one
+						way, from the app to the Pi server, not vice versa.
+						However, 2 way communication is very simple to
+						implement, I had to hack most of this thing together in
+						a weekend, so I was on a bit of a time crunch. I even
+						went as far as to add a voltage divider between the TX
+						pin of the microcontroller and chosen input pin of the
+						Pi in the case I wanted 2 way communication. You need to
+						add this because the GPIO communicates on 3.3v while the
+						ATMEGA 328p communicates on 5v, meaning that the
+						microcontroller can cause issues by sending it data
+						(without a voltage divider).
+					</p>
+					<h4 style="text-align: center">software</h4>
+					<p>
+						There are 3 major pieces of software in the system: the
+						mobile app and microcontroller instructions. I wrote the
+						mobile app in C# with the Xamarin framework, which is a
+						very powerful cross platform app building tool (However,
+						I was only able to build it using native Android API
+						calls, because I only have an Android device to test
+						on). The server on the Pi was written in JavaScript
+						paired the NodeJS runtime environment, which lets JS run
+						outside of a web browser. And I wrote the
+						microcontroller instructions in C with the Arduino
+						compiler. I was thinking about using ATMEL studio/
+						compiler instead, but the program's simplicity meant it
+						didn't need access to any lower level instructions.
+					</p>
+					<p>
+						The heart of the microcontroller instructions is the
+						override of its serialEvent function:
+					</p>
+					<pre style="font-size: 18px">
+            void serialEvent() {
+              byte inputData[6];
+              Serial.readBytes(inputData, 6);
+        
+              if(getKey(inputData, 6) == "some arbitrary key for lock"){
+                servo.write(90);
+              }
+              if(getKey(inputData, 6) == "some arbitrary key for unlock"){ 
+                servo.write(0);  
+              }
+            }
+        </pre
+					>
+					<p>
+						As I mentioned, the code written onto the ATMEGA 328p is
+						very simple. On a serial event, we write the next 6
+						bytes of data into a byte array "inputData". We then
+						compare the return value of the getKey function passed
+						the aforementioned byte array against some arbitrary key
+						values. The getKey function decrypts the data and parses
+						it to a string. If these keys match one of our two
+						pre-set keys, the microcontroller tells the servo to
+						turn to either 0° or 90°, closing or opening the outlet
+						switch respectively.
+					</p>
+					<p>
+						Now for the exciting part, the app itself. I actually
+						managed to flesh out a proper GUI which I wasn't hopeful
+						of. Upon installing the app's .sdk there is a simple
+						setup process. The randomly generated key values on the
+						microcontroller need to be entered initially. The data
+						is then encrypted and stored for continued use, although
+						it can be changed down the line.
+					</p>
+					<p>
+						The next part of the setup process is the simplest but
+						unfortunately takes a while to complete. The network is
+						scanned for a Pi over WiFi, and then it stores the IP
+						and MAC addresses used for verification and sending the
+						POST requests.
+					</p>
+					<p>
+						Article Writing to be Continued; it's late and I need
+						sleep...
+					</p>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
