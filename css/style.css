@@ -30,7 +30,7 @@ header .header li a {
   color: #eeeeee;
   text-decoration: none;
   font-size: 4vh;
-  font-family: 'Oxygen';
+  font-family: "Oxygen";
   font-weight: 400;
 }
 
@@ -47,6 +47,20 @@ h1 {
 h2 {
   font-family: Dosis;
   font-size: 70px;
+}
+
+h3 {
+  font-family: Dosis;
+  font-size: 60px;
+  margin-bottom: -10px;
+  font-weight: 300;
+}
+
+h4 {
+  font-family: Dosis;
+  font-size: 50px;
+  margin-bottom: -10px;
+  font-weight: 300;
 }
 
 a {
@@ -103,6 +117,27 @@ a {
   width: 70px;
 }
 
+.smartfan-body p {
+  font-size: 30px;
+  width: 80vw;
+  text-align: left;
+  font-weight: 300;
+}
+
+.smartfan-body {
+  -webkit-animation: fade-in 1.75s ease;
+          animation: fade-in 1.75s ease;
+}
+
+.article-list {
+  font-family: Dosis;
+  font-size: 32px;
+  width: 80vw;
+  text-align: left;
+  font-weight: 300;
+  list-style: url("../img/point-16px.png");
+}
+
 @media (max-width: 780px) {
   .intro {
     -webkit-box-orient: vertical;
@@ -118,19 +153,167 @@ a {
   #portLang {
     margin-bottom: 0px;
   }
+  #communication {
+    font-size: 80px;
+  }
+  #projects {
+    margin-top: -150px;
+  }
+  #smartfan-title {
+    font-size: 80px;
+  }
+  #smartfan-subtitle {
+    font-size: 40px;
+  }
+  .smartfan-body p {
+    font-size: 30px;
+    width: 450px;
+    text-align: left;
+  }
+}
+
+#projects {
+  -webkit-animation: fade-in 1.75s ease;
+          animation: fade-in 1.75s ease;
+}
+
+#projects div {
+  margin-top: 10px;
 }
 
 @media (min-width: 780px) {
   #projects div {
+    margin-bottom: -180px;
     margin-left: -100px;
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
   }
 }
 
-@media (max-width: 670px) {
-  #communication {
-    font-size: 80px;
+#things {
+  -webkit-animation: slide-left 1.5s ease;
+          animation: slide-left 1.5s ease;
+}
+
+@-webkit-keyframes slide-left {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-80px);
+            transform: translateX(-80px);
   }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-80px);
+            transform: translateX(-80px);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#languages {
+  -webkit-animation: slide-right 1.5s ease;
+          animation: slide-right 1.5s ease;
+}
+
+@-webkit-keyframes slide-right {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(80px);
+            transform: translateX(80px);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(80px);
+            transform: translateX(80px);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes shake {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 0.8;
+  }
+  60% {
+    -webkit-transform: translateX(-5vw);
+            transform: translateX(-5vw);
+  }
+  80% {
+    -webkit-transform: translateX(3vw);
+            transform: translateX(3vw);
+    opacity: 0.8;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 0.8;
+  }
+  60% {
+    -webkit-transform: translateX(-5vw);
+            transform: translateX(-5vw);
+  }
+  80% {
+    -webkit-transform: translateX(3vw);
+            transform: translateX(3vw);
+    opacity: 0.8;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.comDiv {
+  -webkit-animation: shake 0.8s ease;
+          animation: shake 0.8s ease;
 }
 /*# sourceMappingURL=style.css.map */
