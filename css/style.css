@@ -322,6 +322,7 @@ a {
   animation-name: gradient-change;
   animation-duration: 4s;
   animation-iteration-count: infinite;
+  animation-timing-function: ease;
 }
 
 @keyframes gradient-change {
