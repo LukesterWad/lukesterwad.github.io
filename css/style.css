@@ -317,3 +317,21 @@ a {
           animation: shake 0.8s ease;
 }
 /*# sourceMappingURL=style.css.map */
+
+.fader {
+  animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes gradient-change {
+  0% {
+    background: linear-gradient(35deg,#CCFFFF,#FFCCCC);
+  }
+  50% {
+    background: linear-gradient(35deg,#FFCCCC,#CCFFFF);
+  }
+  100% {
+    background: linear-gradient(35deg,#CCFFFF,#FFCCCC);
+  }
+}
