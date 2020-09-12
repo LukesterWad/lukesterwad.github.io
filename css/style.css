@@ -319,7 +319,7 @@ a {
 /*# sourceMappingURL=style.css.map */
 
 .fader {
-  animation-name: example;
+  animation-name: gradient-change;
   animation-duration: 4s;
   animation-iteration-count: infinite;
 }
