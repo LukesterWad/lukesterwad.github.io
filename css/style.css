@@ -1,4 +1,109 @@
 /* margin: top  right bottom left; */
+@-webkit-keyframes slide-left {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-80px);
+            transform: translateX(-80px);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes slide-left {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-80px);
+            transform: translateX(-80px);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes slide-right {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(80px);
+            transform: translateX(80px);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(80px);
+            transform: translateX(80px);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes shake {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 0;
+  }
+  33% {
+    -webkit-transform: translateX(2vw);
+            transform: translateX(2vw);
+  }
+  66% {
+    -webkit-transform: translateX(-1vw);
+            transform: translateX(-1vw);
+    opacity: 0.8;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 0;
+  }
+  33% {
+    -webkit-transform: translateX(2vw);
+            transform: translateX(2vw);
+  }
+  66% {
+    -webkit-transform: translateX(-1vw);
+            transform: translateX(-1vw);
+    opacity: 0.8;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 body {
   margin: 0;
   background: #dddddd;
@@ -68,7 +173,8 @@ a {
   color: black;
 }
 
-.intro {
+.intro,
+.content-flex {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -85,13 +191,15 @@ a {
   align-items: center;
 }
 
-.intro p {
+.intro p,
+.content-flex p {
   text-align: center;
   font-family: Raleway;
   font-size: 40px;
 }
 
-.intro h1 {
+.intro h1,
+.content-flex h1 {
   text-align: center;
 }
 
@@ -117,14 +225,14 @@ a {
   width: 70px;
 }
 
-.smartfan-body p {
+.article-body p {
   font-size: 30px;
   width: 80vw;
   text-align: left;
   font-weight: 300;
 }
 
-.smartfan-body {
+.article-body {
   -webkit-animation: fade-in 1.75s ease;
           animation: fade-in 1.75s ease;
 }
@@ -147,6 +255,10 @@ a {
     height: 800px;
     margin-top: -125px;
   }
+  .article-body {
+    position: absolute;
+    left: 10px;
+  }
   header .header {
     width: 75%;
   }
@@ -159,16 +271,14 @@ a {
   #projects {
     margin-top: -150px;
   }
-  #smartfan-title {
+  #article-title {
     font-size: 80px;
   }
-  #smartfan-subtitle {
+  #article-subtitle {
     font-size: 40px;
   }
-  .smartfan-body p {
+  .article-body p {
     font-size: 30px;
-    width: 450px;
-    text-align: left;
   }
 }
 
@@ -190,31 +300,22 @@ a {
   }
 }
 
+#fan-code-error {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  #pre-fan-code {
+    display: none;
+  }
+  #fan-code-error {
+    display: block;
+  }
+}
+
 #things {
   -webkit-animation: slide-left 1.5s ease;
           animation: slide-left 1.5s ease;
-}
-
-@-webkit-keyframes slide-left {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateX(-80px);
-            transform: translateX(-80px);
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes slide-left {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateX(-80px);
-            transform: translateX(-80px);
-  }
-  100% {
-    opacity: 1;
-  }
 }
 
 #languages {
@@ -222,102 +323,31 @@ a {
           animation: slide-right 1.5s ease;
 }
 
-@-webkit-keyframes slide-right {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateX(80px);
-            transform: translateX(80px);
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes slide-right {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateX(80px);
-            transform: translateX(80px);
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes shake {
-  0% {
-    opacity: 0;
-  }
-  40% {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-    opacity: 0.8;
-  }
-  60% {
-    -webkit-transform: translateX(-5vw);
-            transform: translateX(-5vw);
-  }
-  80% {
-    -webkit-transform: translateX(3vw);
-            transform: translateX(3vw);
-    opacity: 0.8;
-  }
-  100% {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes shake {
-  0% {
-    opacity: 0;
-  }
-  40% {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-    opacity: 0.8;
-  }
-  60% {
-    -webkit-transform: translateX(-5vw);
-            transform: translateX(-5vw);
-  }
-  80% {
-    -webkit-transform: translateX(3vw);
-            transform: translateX(3vw);
-    opacity: 0.8;
-  }
-  100% {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-    opacity: 1;
-  }
-}
-
 .comDiv {
-  -webkit-animation: shake 0.8s ease;
-          animation: shake 0.8s ease;
+  -webkit-animation: shake 0.35s ease;
+          animation: shake 0.35s ease;
 }
-/*# sourceMappingURL=style.css.map */
 
 .fader {
-  background: linear-gradient(35deg,#CCFFFF,#FFCCCC);
+  background: linear-gradient(35deg, #ccffff, #ffcccc);
 }
+
+#projects p:hover, .comDiv p:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition-duration: 0.25s;
+          transition-duration: 0.25s;
+}
+
+#projects p:hover a, .comDiv p:hover a {
+  color: #008055;
+}
+
+#projects p, .comDiv p {
+  pointer-events: none;
+}
+
+#projects a, .comDiv a {
+  pointer-events: all;
+}
+/*# sourceMappingURL=style.css.map */
