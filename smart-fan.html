@@ -19,11 +19,11 @@
 		</header>
 
 		<main>
-			<section class="intro smartfan-body">
+			<section class="content-flex article-body">
 				<div>
-					<h1 id="smartfan-title">smartfan</h1>
+					<h1 id="article-title">smartfan</h1>
 					<h3
-						id="smartfan-subtitle"
+						id="article-subtitle"
 						style="margin-top: 0px; text-align: center"
 					>
 						my fan but smarter
@@ -85,13 +85,16 @@
 					</p>
 					<!--! important diagram needed -->
 					<p>
-						There were 4 major components:
+						There were 5 major components:
 						<li class="article-list" style="margin-top: -20px">
 							RasPi Zero W
 						</li>
 						<li class="article-list">High Torque Servo</li>
 						<li class="article-list">
 							Microcontroller (ATMEGA 328p)
+						</li>
+						<li class="article-list">
+							Temperature Sensor (Dallas DS18B20)
 						</li>
 						<li class="article-list">
 							A Cheap Rechargable Battery Pack
@@ -115,7 +118,7 @@
 						It should be noted that data is only transmitted one
 						way, from the app to the Pi server, not vice versa.
 						However, 2 way communication is very simple to
-						implement, I had to hack most of this thing together in
+						implement, I had to hack most of the project together in
 						a weekend, so I was on a bit of a time crunch. I even
 						went as far as to add a voltage divider between the TX
 						pin of the microcontroller and chosen input pin of the
@@ -145,19 +148,25 @@
 						The heart of the microcontroller instructions is the
 						override of its serialEvent function:
 					</p>
-					<pre style="font-size: 18px">
-            void serialEvent() {
-              byte inputData[6];
-              Serial.readBytes(inputData, 6);
-        
-              if(getKey(inputData, 6) == "some arbitrary key for lock"){
-                servo.write(90);
-              }
-              if(getKey(inputData, 6) == "some arbitrary key for unlock"){ 
-                servo.write(0);  
-              }
-            }
+					<pre style="font-size: 18px" id="pre-fan-code">
+void serialEvent() {
+	byte inputData[6];
+	Serial.readBytes(inputData, 6);
+
+	if(getKey(inputData, 6) == "some arbitrary key for lock"){
+	servo.write(90);
+	}
+	if(getKey(inputData, 6) == "some arbitrary key for unlock"){ 
+	servo.write(0);  
+	}
+}
         </pre
+					>
+					<pre id="fan-code-error">
+Screen too small
+to display code.
+Try rotating.
+					</pre
 					>
 					<p>
 						As I mentioned, the code written onto the ATMEGA 328p is
@@ -191,6 +200,21 @@
 						Article Writing to be Continued; it's late and I need
 						sleep...
 					</p>
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
 				</div>
 			</section>
 		</main>
