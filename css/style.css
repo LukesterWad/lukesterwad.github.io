@@ -404,7 +404,7 @@ a {
 }
 
 .lnkDiv p.bad:hover a {
-  color: 	#aa5555;
+  /* color: 	#aa5555; */
   animation: text-change 0.25s ease forwards;
 }
 
