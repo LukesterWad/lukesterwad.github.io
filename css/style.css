@@ -399,6 +399,10 @@ a {
   pointer-events: all;
 }
 
+.lnkDiv p.bad a {
+  color: #a0a0a0;
+}
+
 .lnkDiv p.bad:hover a {
   color: 	#aa5555;
 }
