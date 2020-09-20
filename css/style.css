@@ -350,4 +350,49 @@ a {
 #projects a, .comDiv a {
   pointer-events: all;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.lnkDiv p.good:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition-duration: 0.25s;
+          transition-duration: 0.25s;
+}
+
+.lnkDiv p.bad:hover {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  -webkit-transition-duration: 0.25s;
+          transition-duration: 0.25s;
+}
+
+.lnkDiv p.good:hover a {
+  color: #008055;
+}
+
+.lnkDiv p {
+  pointer-events: none;
+}
+
+.lnkDiv a.good {
+  pointer-events: all;
+}
+
+.lnkDiv p.bad a {
+  pointer-events: none;
+  color: hsl(0, 80, 120);
+}
 /*# sourceMappingURL=style.css.map */
