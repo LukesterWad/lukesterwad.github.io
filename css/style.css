@@ -405,5 +405,11 @@ a {
 
 .lnkDiv p.bad:hover a {
   color: 	#aa5555;
+  animation: text-change 0.25s ease forwards;
+}
+
+@keyframes text-change {
+  0% {color: a0a0a0;}
+  100% {color: aa5555;}
 }
 /*# sourceMappingURL=style.css.map */
