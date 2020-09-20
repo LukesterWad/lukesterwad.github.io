@@ -383,7 +383,15 @@ a {
   color: #008055;
 }
 
-.lnkDiv p {
+.lnkDiv p.good {
+  pointer-events: none;
+}
+
+.lnkDiv p.bad {
+  pointer-events: all;
+}
+
+.lnkDiv p.bad a {
   pointer-events: none;
 }
 
@@ -391,8 +399,7 @@ a {
   pointer-events: all;
 }
 
-.lnkDiv p.bad a {
-  pointer-events: none;
+.lnkDiv p.bad:hover a {
   color: hsl(0, 80, 120);
 }
 /*# sourceMappingURL=style.css.map */
