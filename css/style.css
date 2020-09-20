@@ -387,7 +387,7 @@ a {
   pointer-events: none;
 }
 
-.lnkDiv a.good {
+.lnkDiv p.good a {
   pointer-events: all;
 }
 
