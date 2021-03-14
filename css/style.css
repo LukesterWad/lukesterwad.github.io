@@ -271,6 +271,9 @@ a {
   #projects {
     margin-top: -150px;
   }
+  #links {
+    margin-top: 0px;
+  }
   #article-title {
     font-size: 80px;
   }
@@ -282,12 +285,14 @@ a {
   }
 }
 
-#projects {
+#projects,
+#links {
   -webkit-animation: fade-in 1.75s ease;
           animation: fade-in 1.75s ease;
 }
 
-#projects div {
+#projects div,
+#links div {
   margin-top: 10px;
 }
 
@@ -295,6 +300,7 @@ a {
   #projects div {
     margin-bottom: -180px;
     margin-left: -100px;
+    transform: rotate(-90deg);
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
   }
@@ -332,22 +338,30 @@ a {
   background: linear-gradient(35deg, #ccffff, #ffcccc);
 }
 
-#projects p:hover, .comDiv p:hover {
+#projects p:hover,
+#links p:hover,
+.comDiv p:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
   -webkit-transition-duration: 0.25s;
           transition-duration: 0.25s;
 }
 
-#projects p:hover a, .comDiv p:hover a {
+#projects p:hover a,
+#links p:hover a,
+.comDiv p:hover a {
   color: #008055;
 }
 
-#projects p, .comDiv p {
+#projects p,
+#links p,
+.comDiv p {
   pointer-events: none;
 }
 
-#projects a, .comDiv a {
+#projects a,
+#links a,
+.comDiv a {
   pointer-events: all;
 }
 /*# sourceMappingURL=style.css.map */
