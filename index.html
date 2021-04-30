@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
-		<meta charset="UFT-8" />
+		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 		<link type="text/css" rel="stylesheet" href="../css/style.css" />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400&family=Oxygen:wght@300;400;700&family=Raleway:wght@400;500&display=swap"
@@ -12,6 +10,48 @@
 		<title>Luke W - Home</title>
 	</head>
 	<body>
+		<div id="overlay">
+			<style>
+				* {
+					margin: 0px;
+					padding: 0px;
+				}
+
+				#overlay {
+					position: fixed;
+					height: 100vh;
+					width: 100vw;
+					background: black;
+				}
+
+				#video,
+				iframe {
+					width: 100%;
+					height: 100%;
+					pointer-events: none;
+				}
+			</style>
+			<div id="video">
+				<iframe
+					src="https://www.youtube-nocookie.com/embed/vErw0DMXugk?controls=0&autoplay=1&start=9"
+					title="YouTube video player"
+					frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media;"
+					allowfullscreen
+				></iframe>
+			</div>
+			<script>
+				if (localStorage.getItem("showed") == null) {
+					localStorage.setItem("showed", "true");
+					setTimeout(function () {
+						document.getElementById("overlay").remove();
+					}, 9000);
+				} else {
+					document.getElementById("overlay").remove();
+				}
+			</script>
+		</div>
+
 		<header>
 			<ul class="header">
 				<li><a href="../">home</a></li>
